@@ -88,6 +88,6 @@ module.exports = {
   createOrder,
   viewOrderByCustomerId,
   viewOrderById,
-  // updateOrder,
+  updateOrder,
   deleteOrder,
 };
