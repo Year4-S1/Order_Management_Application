@@ -37,7 +37,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/inventory-management-application:${{ github.sha }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/order-management-application:${{ github.sha }}
       # - name: Update config files in k8s
       #   run: sed -i.bak 's/{{tag}}/${{ github.sha }}/g' k8s/deploy.yaml && rm k8s/*.bak
 
