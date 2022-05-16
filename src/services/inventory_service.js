@@ -44,31 +44,30 @@ const viewOrderById = async (req, res) => {
   }
 };
 
-// const updateInventory = async (req, res) => {
-//   if (!req.is("application/json")) {
-//     res.send(400);
-//   } else {
-//     Inventory.findByIdAndUpdate(
-//       req.params.id,
-//       {
-//         $set: {
-//           itemName: req.body.itemName,
-
-//         },
-//       },
-//       { upsert: true },
-//       function (err, result) {
-//         if (err) {
-//           res.status(500).send(body);
-//           LOG.info(enums.inventory.UPDATED_ERROR);
-//         } else {
-//           res.status(200).send(result);
-//           LOG.info(enums.inventory.UPDATED_SUCCESS);
-//         }
-//       }
-//     );
-//   }
-// };
+const updateOrder = async (req, res) => {
+  if (!req.is("application/json")) {
+    res.send(400);
+  } else {
+    Order.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: {
+          itemName: req.body.itemName,
+        },
+      },
+      { upsert: true },
+      function (err, result) {
+        if (err) {
+          res.status(500).send(body);
+          LOG.info(enums.order.UPDATED_ERROR);
+        } else {
+          res.status(200).send(result);
+          LOG.info(enums.order.UPDATED_SUCCESS);
+        }
+      }
+    );
+  }
+};
 
 const deleteOrder = async (req, res) => {
   const id = req.params.id;
@@ -89,6 +88,6 @@ module.exports = {
   createOrder,
   viewOrderByCustomerId,
   viewOrderById,
-  // updateInventory,
+  // updateOrder,
   deleteOrder,
 };
