@@ -2,7 +2,7 @@ name: Docker Build Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [master]
 
 # env:
 #   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
