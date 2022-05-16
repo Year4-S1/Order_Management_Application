@@ -4,7 +4,7 @@ on:
   push:
     branches: [master]
 
-  # env:
+env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: order-management
   GKE_ZONE: us-central1
