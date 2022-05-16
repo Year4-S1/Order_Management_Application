@@ -12,10 +12,8 @@ env:
 
 jobs:
   build:
-    runs-on:
-      ubuntu-latest
+    runs-on: ubuntu-latest
 
-      # Add "id-token" with the intended permissions.
     permissions:
       contents: "read"
       id-token: "write"
@@ -41,23 +39,24 @@ jobs:
       - name: Update config files in k8s
         run: sed -i.bak 's/{{tag}}/${{ github.sha }}/g' k8s/deploy.yaml && rm k8s/*.bak
 
-      # Alternative option - authentication via credentials json
+      # Authentication via credentials json
       - id: "auth"
         uses: "google-github-actions/auth@v0"
         with:
           credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
 
-      # Setup gcloud CLI
+      # gCloud CLI
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v0
 
       - name: "Use gcloud CLI"
         run: "gcloud info"
 
-      # Get the GKE credentials so we can deploy to the cluster
+      # GKE credentials to deploy to the cluster
       - run: |-
           gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
-      # Deploy docker image to the GKE cluster
+
+      # Deploy docker image to GKE cluster
       - name: Deploy
         run: |-
           kubectl apply -f k8s/deploy.yaml

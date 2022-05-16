@@ -48,14 +48,11 @@ const updateOrder = async (req, res) => {
   if (!req.is("application/json")) {
     res.send(400);
   } else {
-    Order.findByIdAndUpdate(
+    console.log(req.body.item);
+    await Order.findByIdAndUpdate(
       req.params.id,
-      {
-        $set: {
-          itemName: req.body.itemName,
-        },
-      },
-      { upsert: true },
+      { item: req.body.item },
+      { new: true },
       function (err, result) {
         if (err) {
           res.status(500).send(body);
