@@ -39,3 +39,17 @@ app.route("/").get((req, res) => {
 });
 
 app.use("/order", orderApi());
+
+/* 
+Step 1 : Create server side project
+Step 2 : Put docker file 
+Step 3 : Build-deploy.yaml CI part -> Gen token from docker Hub
+Step 4 : Deploy -> created an image
+Step 5 : Created deploy and service yaml 
+Step 6 : Create google cluster
+Step 7 : In k8s folder execute the code from g-cloud and ran "kubectl create -f ."
+Step 8 : "kubectl get pods" to check pods status
+Step 9 : "kubectl get svc" to get external IP
+Step 10 : Make CD part in build-deploy.yaml -> needed JSON token and env data 
+Step 11 : Pushed to git to run
+*/

@@ -7,6 +7,8 @@ spec:
     matchLabels:
       app: order-management
   replicas: 2
+
+  # Because it crashed during pods creation
   strategy:
     type: RollingUpdate
     rollingUpdate:
